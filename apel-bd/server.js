@@ -17,7 +17,7 @@ requireDir("./src/models/");
 const User = mongoose.model("Usuario");
 const Empresa = mongoose.model("Empresa");
 
-app.use("/api", require("./src/routes"));
+app.use("/api", require("./src/routes/routes"));
 
 app.listen(3001, () => {
   console.log("Servidor Iniciado");
