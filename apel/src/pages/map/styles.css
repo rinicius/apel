@@ -1,0 +1,11 @@
+.Mapa {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaflet-container {
+  height: 100vh;
+  width: 100%;
+}
