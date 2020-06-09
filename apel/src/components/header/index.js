@@ -50,6 +50,16 @@ export function DropdownMenu() {
   );
 }
 
+function sticky() {
+  const scrolled = false;
+  window.addEventListener("scroll", () => {
+    const isTop = window.scrollY < 100;
+
+    if (isTop) scrolled = true;
+    else scrolled = false;
+  });
+}
+
 export function Logo() {
   return (
     <Link to="/home" className="logo">
