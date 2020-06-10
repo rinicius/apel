@@ -20,6 +20,11 @@ const positions = [
     descricao: "Terminal",
     pos: [-22.874712, -47.207163],
   },
+
+  {
+    descricao: "OBJETIVO",
+    pos: [-22.85513, -47.18922],
+  },
 ];
 
 function Mapa() {
