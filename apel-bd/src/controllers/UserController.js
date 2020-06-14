@@ -69,6 +69,9 @@ module.exports = {
           }
         );
 
+        const nome = usuario.nome_sobrenome;
+        localStorage.setItem("CurrentUser", JSON.stringify({ token, nome }));
+
         return res.status(200).send({
           tipo: "usuario",
           mensagem: "autenticado com sucesso",

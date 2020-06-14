@@ -1,6 +1,6 @@
 import React, { useState, Component } from "react";
 import { Link } from "react-router-dom";
-import { BsGearFill, BsPersonFill } from "react-icons/bs";
+import { BsGearFill, BsPersonFill, BsFillPersonPlusFill } from "react-icons/bs";
 
 import "./styles.css";
 
@@ -41,11 +41,13 @@ export function DropdownMenu() {
 
   return (
     <div className="dropdown">
-      <DropdownItem leftIcon={<BsPersonFill />} link="/profile">
-        {" "}
-        Perfil
+      <DropdownItem leftIcon={<BsPersonFill />} link="/login">
+        <p style={{ color: "#dadce1" }}>Login</p>
       </DropdownItem>
-      <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem>
+      <DropdownItem leftIcon={<BsFillPersonPlusFill />} link="/signup">
+        <p style={{ color: "#dadce1" }}>Cadastre-se</p>
+      </DropdownItem>
+      {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
     </div>
   );
 }

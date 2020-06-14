@@ -65,6 +65,8 @@ module.exports = {
           }
         );
 
+        localStorage.setItem("CurrentUser", JSON.stringify({ token, nome }));
+
         return res.status(200).send({
           tipo: "empresa",
           mensagem: "Autenticado com sucesso",
