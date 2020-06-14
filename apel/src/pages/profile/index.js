@@ -7,14 +7,16 @@ import { BsTagFill } from "react-icons/bs";
 function Profile() {
   return (
     <div>
-      <Logo />
-      <Navbar>
-        <NavItem icon={<BsTagFill />}></NavItem>
-        <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
-        <NavItem icon={<BsChevronDown />}>
-          <DropdownMenu />
-        </NavItem>
-      </Navbar>
+      <div>
+        <Logo />
+        <Navbar>
+          <NavItem icon={<BsTagFill />}></NavItem>
+          <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
+          <NavItem icon={<BsChevronDown />}>
+            <DropdownMenu />
+          </NavItem>
+        </Navbar>
+      </div>
     </div>
   );
 }

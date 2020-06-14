@@ -14,8 +14,24 @@ import {
   GridColumn,
   GridRow,
   Divider,
+  Message,
 } from "semantic-ui-react";
+import { isAuthenticated } from "../../services/logout";
+import * as qs from "query-string";
+
 import "semantic-ui-css/semantic.min.css";
+
+const CheckSign = () => {
+  const parsed = qs.parse(window.location.search);
+
+  if (parsed.islog == "true") {
+    return <Message size="tiny">Logado</Message>;
+  }
+  if (parsed.logout == "true") {
+    isAuthenticated();
+    return <Message size="tiny">Deslogado com sucesso</Message>;
+  }
+};
 
 function Main() {
   return (
@@ -30,6 +46,7 @@ function Main() {
           </NavItem>
         </Navbar>
       </div>
+      <div>{CheckSign()}</div>
       <div
         className="ui inverted vertical center aligned segment"
         style={{ height: "570px", padding: "0.1em 0em" }}

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const axios = require("axios");
 
 const Empresa = mongoose.model("Empresa");
 
@@ -10,6 +11,11 @@ module.exports = {
 
     const empresa = await Empresa.paginate({}, { page, limit: 10 });
     return res.json(empresa);
+  },
+
+  async indexAll(req, res) {
+    const empresas = await Empresa.find();
+    return res.json(empresas);
   },
 
   async show(req, res) {
@@ -30,11 +36,24 @@ module.exports = {
     } = req.body;
 
     const hashedPass = await bcrypt.hash(senha, 10);
+    const locationiqtoken = "6d1132bd03e78f";
+    let convertedAddres = [];
+
+    await axios
+      .get(
+        `https://api.locationiq.com/v1/autocomplete.php?key=${locationiqtoken}&q=${endereco}`
+      )
+      .then((res) => {
+        convertedAddres = [res.data[0].lat, res.data[0].lon];
+      })
+      .catch((err) => {
+        return res.status(200).send({ mensagem: "Endereço inválido" });
+      });
 
     const empr = {
       _id,
       nome,
-      endereco,
+      endereco: convertedAddres,
       email,
       telefone,
       senha: hashedPass,
@@ -65,14 +84,14 @@ module.exports = {
           }
         );
 
-        localStorage.setItem("CurrentUser", JSON.stringify({ token, nome }));
-
         return res.status(200).send({
           tipo: "empresa",
+          username: empresa[0].nome,
           mensagem: "Autenticado com sucesso",
           token,
         });
       }
+      return res.status(401).send({ mensagem: "Falha na autorização" });
     });
   },
 

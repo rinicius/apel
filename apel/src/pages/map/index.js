@@ -8,56 +8,52 @@ import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
 import "./styles.css";
 
-// Conectar os markers no banco de dados
+export default class classeMapa extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-const positions = [
-  {
-    descricao: "ETEC",
-    pos: [-22.872221, -47.21063],
-  },
+  state = {
+    empresas: [],
+  };
 
-  {
-    descricao: "Terminal",
-    pos: [-22.874712, -47.207163],
-  },
+  componentDidMount() {
+    this.loadEmpresas();
+  }
 
-  {
-    descricao: "OBJETIVO",
-    pos: [-22.85513, -47.18922],
-  },
-];
+  loadEmpresas = async () => {
+    const empresas = await api.get("/empresas/");
+    this.setState({ empresas: empresas.data });
+  };
 
-function Mapa() {
-  const map = (
-    <div>
+  // [51.505, -0.09]
+  render() {
+    const { empresas } = this.state;
+    return (
       <div>
-        <Logo />
-        <Navbar>
-          <NavItem icon={<BsTagFill />}></NavItem>
-          <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
-          <NavItem icon={<BsChevronDown />}>
-            <DropdownMenu />
-          </NavItem>
-        </Navbar>
-      </div>
-      <Map className="mapa" center={positions[0].pos} zoom={17}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
+        <div>
+          <Logo />
+          <Navbar>
+            <NavItem icon={<BsTagFill />}></NavItem>
+            <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
+            <NavItem icon={<BsChevronDown />}>
+              <DropdownMenu />
+            </NavItem>
+          </Navbar>
+        </div>
+        <Map className="mapa" center={[-22.872409, -47.210676]} zoom={17}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
 
-        {positions.map((values) => {
-          return (
-            <Marker position={values.pos}>
-              <Popup>{values.descricao}</Popup>
+          {empresas.map((values) => (
+            <Marker position={values.endereco}>
+              <Popup key={values._id}>{values.nome}</Popup>
             </Marker>
-          );
-        })}
-      </Map>
-    </div>
-  );
-
-  return map;
+          ))}
+        </Map>
+      </div>
+    );
+  }
 }
-
-export default Mapa;

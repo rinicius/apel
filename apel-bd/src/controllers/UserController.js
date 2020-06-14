@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const checkType = require("../middlewares/typeUser");
 
 const Usuario = mongoose.model("Usuario");
 
@@ -48,38 +49,48 @@ module.exports = {
     return res.json(usuario);
   },
 
-  async login(req, res) {
-    const usuario = await Usuario.find({ email: req.body.email });
-    if (usuario.length === 0)
-      return res.status(401).send({ mensagem: "email ou senha incorretos" });
-
-    await bcrypt.compare(req.body.senha, usuario[0].senha, (err, result) => {
-      if (err) {
+  async login(req, res, next) {
+    const isUser = await checkType.checkType(req, res, next);
+    if (!isUser) {
+      next();
+    } else {
+      const usuario = await Usuario.find({ email: req.body.email });
+      if (usuario.length === 0)
         return res.status(401).send({ mensagem: "email ou senha incorretos" });
-      }
-      if (result) {
-        const token = jwt.sign(
-          {
-            _id: usuario[0]._id,
-            email: usuario[0].email,
-          },
-          "305806b99b4de4300ad24fbb95ff55cb",
-          {
-            expiresIn: "5d",
-          }
-        );
 
-        const nome = usuario.nome_sobrenome;
-        localStorage.setItem("CurrentUser", JSON.stringify({ token, nome }));
+      await bcrypt.compare(req.body.senha, usuario[0].senha, (err, result) => {
+        if (err) {
+          return res
+            .status(401)
+            .send({ mensagem: "email ou senha incorretos" });
+        }
+        if (result) {
+          const token = jwt.sign(
+            {
+              _id: usuario[0]._id,
+              email: usuario[0].email,
+            },
+            "305806b99b4de4300ad24fbb95ff55cb",
+            {
+              expiresIn: "5d",
+            }
+          );
 
-        return res.status(200).send({
-          tipo: "usuario",
-          mensagem: "autenticado com sucesso",
-          token,
-        });
-      }
-      return res.status(401).send({ mensagem: "Falha na autorização" });
-    });
+          const nome = usuario.nome_sobrenome;
+          // window.localStorage.setItem(
+          //   "CurrentUser",
+          //   JSON.stringify({ token, nome })
+          // );
+
+          return res.status(200).send({
+            tipo: "usuario",
+            mensagem: "autenticado com sucesso",
+            token,
+          });
+        }
+        return res.status(401).send({ mensagem: "Falha na autorização" });
+      });
+    }
   },
 
   async update(req, res) {

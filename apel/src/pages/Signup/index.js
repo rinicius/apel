@@ -190,8 +190,14 @@ class Signup extends Component {
       })
       .catch((err) => {
         console.log(err);
-        alert("Erro no login");
+        this.errorMessage(true);
       });
+  };
+
+  errorMessage = (isError) => {
+    if (isError) {
+      return <Message>Endereço inválido</Message>;
+    }
   };
 
   setRedirect = () => {
@@ -219,6 +225,8 @@ class Signup extends Component {
             </NavItem>
           </Navbar>
         </div>
+
+        <div>{this.erroMessage}</div>
 
         <Grid
           textAlign="center"

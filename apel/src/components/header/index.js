@@ -1,6 +1,12 @@
 import React, { useState, Component } from "react";
 import { Link } from "react-router-dom";
-import { BsGearFill, BsPersonFill, BsFillPersonPlusFill } from "react-icons/bs";
+import {
+  BsGearFill,
+  BsPersonFill,
+  BsFillPersonPlusFill,
+  BsChevronBarLeft,
+} from "react-icons/bs";
+import { isAuthenticated } from "../../services/auth";
 
 import "./styles.css";
 
@@ -30,6 +36,8 @@ export function NavItem(props) {
 }
 
 export function DropdownMenu() {
+  const isAuth = isAuthenticated();
+  console.log(isAuth);
   function DropdownItem(props) {
     return (
       <Link to={props.link} className="menu-item">
@@ -39,17 +47,31 @@ export function DropdownMenu() {
     );
   }
 
-  return (
-    <div className="dropdown">
-      <DropdownItem leftIcon={<BsPersonFill />} link="/login">
-        <p style={{ color: "#dadce1" }}>Login</p>
-      </DropdownItem>
-      <DropdownItem leftIcon={<BsFillPersonPlusFill />} link="/signup">
-        <p style={{ color: "#dadce1" }}>Cadastre-se</p>
-      </DropdownItem>
-      {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
-    </div>
-  );
+  if (isAuth == false) {
+    return (
+      <div className="dropdown">
+        <DropdownItem leftIcon={<BsPersonFill />} link="/login">
+          <p style={{ color: "#dadce1" }}>Login</p>
+        </DropdownItem>
+        <DropdownItem leftIcon={<BsFillPersonPlusFill />} link="/signup">
+          <p style={{ color: "#dadce1" }}>Cadastre-se</p>
+        </DropdownItem>
+        {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
+      </div>
+    );
+  } else if (isAuth == true) {
+    return (
+      <div className="dropdown">
+        <DropdownItem leftIcon={<BsPersonFill />} link="/profile">
+          <p style={{ color: "#dadce1" }}>Perfil</p>
+        </DropdownItem>
+        <DropdownItem leftIcon={<BsChevronBarLeft />} link="/home?logout=true">
+          <p style={{ color: "#dadce1" }}>Sair</p>
+        </DropdownItem>
+        {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
+      </div>
+    );
+  }
 }
 
 function sticky() {

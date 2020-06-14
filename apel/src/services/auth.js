@@ -1,5 +1,6 @@
 export const isAuthenticated = () => {
-  if (localStorage.getItem("CurrentUser") == null) {
+  console.log(window.localStorage);
+  if (window.localStorage.length == 0) {
     return false;
   } else return true;
 };

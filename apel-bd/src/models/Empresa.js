@@ -8,7 +8,7 @@ const EmpresaSchema = mongoose.Schema({
   },
 
   endereco: {
-    type: String,
+    type: Array,
     required: true,
   },
 
