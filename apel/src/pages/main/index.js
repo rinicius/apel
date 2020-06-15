@@ -6,7 +6,6 @@ import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
 import {
   Header,
-  Strong,
   Segment,
   Button,
   Icon,

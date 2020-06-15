@@ -3,39 +3,44 @@ import { Navbar, NavItem, DropdownMenu, Logo } from "../../components/header";
 import { BsChevronDown } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
-import { Header, Segment, Button, Icon, Grid, Image } from "semantic-ui-react";
+import {
+  Header,
+  Strong,
+  Segment,
+  Button,
+  Icon,
+  Grid,
+  GridColumn,
+  GridRow,
+  Divider,
+  Message,
+  Container,
+  Accordion,
+  Image,
+} from "semantic-ui-react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
 // import image from "../../uploads/";
+import * as qs from "query-string";
 
 import "semantic-ui-css/semantic.min.css";
 
-class Profile extends Component {
+class Profilealh extends Component {
   state = {
     user: {},
     model: {},
     path: [],
+    id: "",
   };
+
+  //5edae43cf24682268c4fff64
 
   getModel = async () => {
     api
-      .get(`show/${this.state.user._id}`)
+      .get(`show/${qs.parse(window.location.search).id}`)
       .then((res) => {
         this.setState({ model: res.data });
         this.setState({ path: this.state.model.img.split(`\\`) });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  Token = async () => {
-    const token = localStorage.getItem("currentUser");
-    api
-      .post("/decode", { token })
-      .then((res) => {
-        this.setState({ user: res.data.decode });
-        this.getModel();
         return res.data;
       })
       .catch((err) => {
@@ -43,12 +48,17 @@ class Profile extends Component {
       });
   };
 
+  CheckSign = () => {
+    const id = qs.parse(window.location.search);
+    this.setState({ id });
+  };
+
   componentDidMount() {
-    this.Token();
+    this.getModel();
   }
 
   render() {
-    console.log(this.state.user);
+    console.log(this.state.id);
     return (
       <div>
         <div>
@@ -88,26 +98,18 @@ class Profile extends Component {
                       style={{ height: "240px", width: "240px" }}
                     ></Image>
                     <br />
-                    <Button as={Link} to="/upload">
-                      Mudar imagem de perfil
-                    </Button>
-                    <br />
-                    <br />
-                    <Button as={Link} to="/editar">
-                      Editar perfil
-                    </Button>
                   </Grid.Column>
                 </Grid.Row>
-                <Grid.Row style={{ top: "-140px" }}>
+                <Grid.Row style={{ top: "-170px" }}>
                   <Grid.Column style={{ padding: "0em 0em 0em 2.5em" }}>
                     <Header as="h1" style={{ color: "#242526" }}>
-                      {this.state.user.tipo == "usuario"
+                      {"nome_sobrenome" in this.state.model
                         ? this.state.model.nome_sobrenome
                         : this.state.model.nome}
                     </Header>
                   </Grid.Column>
                 </Grid.Row>
-                <Grid.Row style={{ top: "-145px" }}>
+                <Grid.Row style={{ top: "-175px" }}>
                   <Grid.Column style={{ padding: "0em 0em 0em 2.5em" }}>
                     <Header
                       as="h4"
@@ -149,4 +151,4 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default Profilealh;

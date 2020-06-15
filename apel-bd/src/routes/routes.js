@@ -20,9 +20,10 @@ var upload = multer({ storage: storage });
 const UserController = require("../controllers/UserController.js");
 const EmpresaController = require("../controllers/EmpresaController.js");
 
-routes.get("/usuario/:id", UserController.show); // Mostrar usuario
+routes.get("/show/:id", UserController.show, EmpresaController.show); // Mostrar usuario
+
 routes.get("/usuario", UserController.index); // Mostrar usuarios
-routes.get("/empresa/:id", EmpresaController.show); // Mostrar empresa
+
 routes.get("/empresa/", EmpresaController.index); // Mostrar empresas
 routes.get("/empresas/", EmpresaController.indexAll); // Mostrar empresas
 routes.post("/decode", Login);

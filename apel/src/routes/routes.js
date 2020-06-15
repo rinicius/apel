@@ -8,6 +8,8 @@ import { PrivateRoute } from "./privateroute";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import UploadImage from "../pages/upload";
+import Profilealh from "../pages/profilealh";
+import Index from "../pages/index";
 
 const Routes = () => (
   <BrowserRouter>
@@ -16,8 +18,10 @@ const Routes = () => (
       <Route path="/home" component={Main} />
       <Route path="/map" component={Map} />
       <PrivateRoute path="/profile" component={Profile} />
+      <Route path="/profilealh" component={Profilealh} />
       <Route path="/upload" component={UploadImage} />
       <Route path="/login" component={Login} />
+      <Route path="/index" component={Index} />
       <Route path="/signup" component={Signup} />
     </Switch>
   </BrowserRouter>

@@ -53,6 +53,10 @@ export default class classeMapa extends Component {
                 {values.nome}
                 <br />
                 {values.descricao}
+                <br />
+                <br />
+
+                <Link to={"/profilealh?id=" + values._id}>Acessar Perfil</Link>
               </Popup>
             </Marker>
           ))}

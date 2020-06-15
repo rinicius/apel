@@ -55,7 +55,7 @@ const UserSchema = new mongoose.Schema({
   img: {
     type: String,
     required: false,
-    default: null,
+    default: "..\\apel\\public\\img\\default-placeholder-1-2.png",
   },
 });
 

@@ -5,7 +5,6 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment,
 } from "semantic-ui-react";
@@ -37,6 +36,7 @@ class Login extends Component {
 
   CheckSign = () => {
     const parsed = qs.parse(window.location.search);
+    console.log(parsed);
 
     if (parsed.s == "true") {
       return <Message>Sucesso! Agora faça login com a conta criada</Message>;
@@ -45,7 +45,6 @@ class Login extends Component {
 
   submitHandler = () => {
     const usuario = this.state;
-    console.log(this.state);
 
     api
       .post(`/login`, usuario)
@@ -73,7 +72,7 @@ class Login extends Component {
           </Navbar>
         </div>
 
-        <div>{this.CheckSign}</div>
+        <div>{this.CheckSign()}</div>
         <div>{this.goingToRedirect()}</div>
 
         <Grid

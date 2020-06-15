@@ -56,6 +56,9 @@ export function DropdownMenu() {
         <DropdownItem leftIcon={<BsFillPersonPlusFill />} link="/signup">
           <p style={{ color: "#dadce1" }}>Cadastre-se</p>
         </DropdownItem>
+        <DropdownItem leftIcon={<BsPersonFill />} link="/index">
+          <p style={{ color: "#dadce1" }}>Perfis</p>
+        </DropdownItem>
         {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
       </div>
     );
@@ -67,6 +70,9 @@ export function DropdownMenu() {
         </DropdownItem>
         <DropdownItem leftIcon={<BsChevronBarLeft />} link="/home?logout=true">
           <p style={{ color: "#dadce1" }}>Sair</p>
+        </DropdownItem>
+        <DropdownItem leftIcon={<BsPersonFill />} link="/index">
+          <p style={{ color: "#dadce1" }}>Perfis</p>
         </DropdownItem>
         {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
       </div>

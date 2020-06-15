@@ -13,9 +13,13 @@ module.exports = {
     return res.json(usuario);
   },
 
-  async show(req, res) {
+  async show(req, res, next) {
     const usuario = await Usuario.findById(req.params.id);
-    return res.json(usuario);
+    if (usuario == null) {
+      next();
+    } else {
+      return res.json(usuario);
+    }
   },
 
   async signup(req, res) {
