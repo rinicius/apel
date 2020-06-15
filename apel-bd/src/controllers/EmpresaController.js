@@ -31,6 +31,9 @@ module.exports = {
       email,
       telefone,
       senha,
+      descricao,
+      twitter,
+      site,
       createdAt,
       __v,
     } = req.body;
@@ -57,6 +60,9 @@ module.exports = {
       email,
       telefone,
       senha: hashedPass,
+      descricao,
+      twitter,
+      site,
       createdAt,
       __v,
     };
@@ -77,6 +83,7 @@ module.exports = {
           {
             _id: empresa[0]._id,
             email: empresa[0].email,
+            tipo: "empresa",
           },
           "305806b99b4de4300ad24fbb95ff55cb",
           {
@@ -107,5 +114,23 @@ module.exports = {
     await Empresa.findByIdAndRemove(req.params.id);
 
     return res.send("<h2>Empresa " + nome.nome + " removido com sucesso</h2>");
+  },
+
+  async upImage(req, res) {
+    const filter = { _id: req.params.id };
+    // let user = await Usuario.findOneAndUpdate(
+    //   { _id: req.params.id },
+    //   { img: req.file.path },
+    //   {
+    //     new: true,
+    //   }
+    // );
+
+    await Empresa.updateOne(filter, { img: req.file.path });
+
+    console.log(req.params.id);
+    return res.status(200).send({
+      local: req.file.path,
+    });
   },
 };

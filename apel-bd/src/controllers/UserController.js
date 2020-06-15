@@ -27,6 +27,9 @@ module.exports = {
       profissao,
       email,
       senha,
+      descricao,
+      twitter,
+      site,
       createdAt,
       __v,
     } = req.body;
@@ -41,6 +44,9 @@ module.exports = {
       profissao,
       email,
       senha: hashedPass,
+      descricao,
+      twitter,
+      site,
       createdAt,
       __v,
     };
@@ -69,6 +75,7 @@ module.exports = {
             {
               _id: usuario[0]._id,
               email: usuario[0].email,
+              tipo: "usuario",
             },
             "305806b99b4de4300ad24fbb95ff55cb",
             {
@@ -94,7 +101,17 @@ module.exports = {
   },
 
   async update(req, res) {
-    const { nome_sobrenome, idade, sexo, profissao, email, senha } = req.body;
+    const {
+      nome_sobrenome,
+      idade,
+      sexo,
+      profissao,
+      email,
+      senha,
+      descricao,
+      twitter,
+      site,
+    } = req.body;
 
     const hashedPass = await bcrypt.hash(senha, 10);
 
@@ -105,6 +122,9 @@ module.exports = {
       profissao,
       email,
       senha: hashedPass,
+      descricao,
+      twitter,
+      site,
     };
     const usuario = await Usuario.findByIdAndUpdate(req.usuario._id, user, {
       new: true,
@@ -119,5 +139,26 @@ module.exports = {
     return res.status(200).send({
       mensagem: "Usuario " + nome.nome_sobrenome + " removido com sucesso",
     });
+  },
+
+  async upImage(req, res, next) {
+    let user = await Usuario.findById(req.params.id);
+    if (user == undefined) {
+      next();
+    } else {
+      const filter = { _id: req.params.id };
+      await Usuario.updateOne(filter, { img: req.file.path });
+
+      return res.status(200).send({
+        local: req.file.path,
+      });
+    }
+    // let user = await Usuario.findOneAndUpdate(
+    //   { _id: req.params.id },
+    //   { img: req.file.path },
+    //   {
+    //     new: true,
+    //   }
+    // );
   },
 };

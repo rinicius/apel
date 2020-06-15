@@ -42,7 +42,10 @@ class Signup extends Component {
     },
     value: "",
     redirect: false,
+    selectedFile: null,
   };
+
+  submitFile = () => {};
 
   handleChange = (e, { value }) => {
     this.setState({ value });
@@ -62,7 +65,7 @@ class Signup extends Component {
           />
           <Form.Input
             fluid
-            icon="user"
+            icon="mail"
             iconPosition="left"
             placeholder="Endereço de e-mail"
             name="email"
@@ -92,6 +95,30 @@ class Signup extends Component {
             placeholder="Localização"
             name="endereco"
             onChange={(e) => this.setState({ endereco: e.target.value })}
+          ></Form.Input>
+          <Form.Input
+            fluid
+            icon="align left"
+            iconPosition="left"
+            placeholder="Descrição da empresa"
+            name="descricao"
+            onChange={(e) => this.setState({ descricao: e.target.value })}
+          ></Form.Input>
+          <Form.Input
+            fluid
+            icon="twitter"
+            iconPosition="left"
+            placeholder="Twitter (opcional)"
+            name="twitter"
+            onChange={(e) => this.setState({ twitter: e.target.value })}
+          ></Form.Input>
+          <Form.Input
+            fluid
+            icon="keyboard"
+            iconPosition="left"
+            placeholder="Seu site (opcional)"
+            name="site"
+            onChange={(e) => this.setState({ site: e.target.value })}
           ></Form.Input>
         </div>
       );
@@ -124,7 +151,7 @@ class Signup extends Component {
           />
           <Form.Input
             fluid
-            icon="user"
+            icon="mail"
             iconPosition="left"
             placeholder="Endereço de e-mail"
             name="email"
@@ -146,6 +173,30 @@ class Signup extends Component {
             placeholder="Profissão"
             name="profissao"
             onChange={(e) => this.setState({ profissao: e.target.value })}
+          ></Form.Input>
+          <Form.Input
+            fluid
+            icon="align left"
+            iconPosition="left"
+            placeholder="Sua descrição"
+            name="descricao"
+            onChange={(e) => this.setState({ descricao: e.target.value })}
+          ></Form.Input>
+          <Form.Input
+            fluid
+            icon="twitter"
+            iconPosition="left"
+            placeholder="Twitter (opcional)"
+            name="twitter"
+            onChange={(e) => this.setState({ twitter: e.target.value })}
+          ></Form.Input>
+          <Form.Input
+            fluid
+            icon="keyboard"
+            iconPosition="left"
+            placeholder="Seu site (opcional)"
+            name="site"
+            onChange={(e) => this.setState({ site: e.target.value })}
           ></Form.Input>
         </div>
       );
@@ -169,6 +220,9 @@ class Signup extends Component {
         profissao: this.state.profissao,
         email: this.state.email,
         senha: this.state.senha,
+        descricao: this.state.descricao,
+        twitter: this.state.twitter,
+        site: this.state.site,
       };
     } else if (value == "empresa") {
       usuario = {
@@ -177,6 +231,9 @@ class Signup extends Component {
         email: this.state.email,
         senha: this.state.senha,
         telefone: this.state.telefone,
+        descricao: this.state.descricao,
+        twitter: this.state.twitter,
+        site: this.state.site,
       };
     }
 
@@ -226,19 +283,23 @@ class Signup extends Component {
           </Navbar>
         </div>
 
-        <div>{this.erroMessage}</div>
+        <div>{this.errorMessage}</div>
 
         <Grid
           textAlign="center"
           style={{ height: "70vh" }}
           verticalAlign="middle"
         >
-          <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid.Column style={{ maxWidth: 450, top: "50px" }}>
             <Header as="h2" color="black" textAlign="center">
               Cadastre-se{" "}
             </Header>
 
-            <Form size="large" onSubmit={this.handleSubmit}>
+            <Form
+              size="large"
+              onSubmit={this.handleSubmit}
+              style={{ top: "10px" }}
+            >
               <Segment stacked>
                 <Header as="h3" style={{ display: "flex", alignItens: "left" }}>
                   Você é:

@@ -36,6 +36,27 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  descricao: {
+    type: String,
+    required: false,
+  },
+
+  twitter: {
+    type: String,
+    required: false,
+  },
+
+  site: {
+    type: String,
+    required: false,
+  },
+
+  img: {
+    type: String,
+    required: false,
+    default: null,
+  },
 });
 
 UserSchema.plugin(mongoosePaginate);

@@ -49,7 +49,11 @@ export default class classeMapa extends Component {
 
           {empresas.map((values) => (
             <Marker position={values.endereco}>
-              <Popup key={values._id}>{values.nome}</Popup>
+              <Popup key={values._id}>
+                {values.nome}
+                <br />
+                {values.descricao}
+              </Popup>
             </Marker>
           ))}
         </Map>

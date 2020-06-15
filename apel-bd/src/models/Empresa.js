@@ -27,6 +27,27 @@ const EmpresaSchema = mongoose.Schema({
     required: true,
   },
 
+  descricao: {
+    type: String,
+    required: false,
+  },
+
+  twitter: {
+    type: String,
+    required: false,
+  },
+
+  site: {
+    type: String,
+    required: false,
+  },
+
+  img: {
+    type: String,
+    required: false,
+    default: null,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
