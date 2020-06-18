@@ -92,7 +92,7 @@ class Signup extends Component {
             fluid
             icon="location arrow"
             iconPosition="left"
-            placeholder="Localização"
+            placeholder="Localização (sem acentos)"
             name="endereco"
             onChange={(e) => this.setState({ endereco: e.target.value })}
           ></Form.Input>
