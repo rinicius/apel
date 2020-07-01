@@ -7,6 +7,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
 import "./styles.css";
+import Index from "../../components/productsContainer";
 
 export default class classeMapa extends Component {
   constructor(props) {
@@ -28,13 +29,14 @@ export default class classeMapa extends Component {
 
   // [51.505, -0.09]
   render() {
+    document.body.style.overflow = "hidden";
     const { empresas } = this.state;
     return (
       <div>
         <div>
           <Logo />
           <Navbar>
-            <NavItem icon={<BsTagFill />}></NavItem>
+            <NavItem icon={<BsTagFill />} link="/product"></NavItem>
             <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
             <NavItem icon={<BsChevronDown />}>
               <DropdownMenu />
@@ -61,6 +63,19 @@ export default class classeMapa extends Component {
             </Marker>
           ))}
         </Map>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <div className="userContainer">
+            <div>
+              {" "}
+              <Index />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -83,7 +83,7 @@ a {
   border-radius: var(--border-radius);
   padding: 1rem;
   overflow: hidden;
-  z-index: 999;
+  z-index: 314160;
 }
 
 .menu-item {

@@ -26,6 +26,13 @@ const CheckSign = () => {
   if (parsed.islog == "true") {
     return <Message size="tiny">Logado</Message>;
   }
+  if (parsed.islog == "false") {
+    return (
+      <Message size="tiny">
+        Você precisa estar logado para acessar essa página
+      </Message>
+    );
+  }
   if (parsed.logout == "true") {
     isAuthenticated();
     return <Message size="tiny">Deslogado com sucesso</Message>;
@@ -38,7 +45,7 @@ function Main() {
       <div>
         <Logo />
         <Navbar>
-          <NavItem icon={<BsTagFill />}></NavItem>
+          <NavItem icon={<BsTagFill />} link="/product"></NavItem>
           <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
           <NavItem icon={<BsChevronDown />}>
             <DropdownMenu />

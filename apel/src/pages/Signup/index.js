@@ -31,9 +31,9 @@ let checado = "";
 class Signup extends Component {
   state = {
     values: {
-      nome: "", // jok
-      email: "", // jok
-      senha: "", // jok
+      nome: "",
+      email: "",
+      senha: "",
       idade: "",
       sexo: "",
       profissao: "",
@@ -210,8 +210,6 @@ class Signup extends Component {
     const value = this.state.value;
     let usuario;
 
-    console.log(this.state);
-
     if (value == "usuario") {
       usuario = {
         nome_sobrenome: this.state.nome,
@@ -275,7 +273,7 @@ class Signup extends Component {
         <div>
           <Logo />
           <Navbar>
-            <NavItem icon={<BsTagFill />}></NavItem>
+            <NavItem icon={<BsTagFill />} link="/product"></NavItem>
             <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
             <NavItem icon={<BsChevronDown />}>
               <DropdownMenu />

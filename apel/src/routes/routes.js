@@ -10,6 +10,7 @@ import Signup from "../pages/Signup";
 import UploadImage from "../pages/upload";
 import Profilealh from "../pages/profilealh";
 import Index from "../pages/index";
+import InsertProduct from "../pages/product";
 
 const Routes = () => (
   <BrowserRouter>
@@ -23,6 +24,7 @@ const Routes = () => (
       <Route path="/login" component={Login} />
       <Route path="/index" component={Index} />
       <Route path="/signup" component={Signup} />
+      <PrivateRoute path="/product" component={InsertProduct} />
     </Switch>
   </BrowserRouter>
 );

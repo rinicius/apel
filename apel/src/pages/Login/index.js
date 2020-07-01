@@ -64,7 +64,7 @@ class Login extends Component {
         <div>
           <Logo />
           <Navbar>
-            <NavItem icon={<BsTagFill />}></NavItem>
+            <NavItem icon={<BsTagFill />} link="/product"></NavItem>
             <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
             <NavItem icon={<BsChevronDown />}>
               <DropdownMenu />

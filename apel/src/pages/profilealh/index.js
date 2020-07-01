@@ -59,12 +59,13 @@ class Profilealh extends Component {
 
   render() {
     console.log(this.state.id);
+
     return (
       <div>
         <div>
           <Logo />
           <Navbar>
-            <NavItem icon={<BsTagFill />}></NavItem>
+            <NavItem icon={<BsTagFill />} link="/product"></NavItem>
             <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
             <NavItem icon={<BsChevronDown />}>
               <DropdownMenu />

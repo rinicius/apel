@@ -29,7 +29,6 @@ export default class UploadImage extends Component {
 
   handleFile = (e) => {
     this.setState({ selectedFile: e.target.files[0] });
-    console.log(e.target.files[0]);
   };
 
   getId = async () => {
@@ -89,7 +88,7 @@ export default class UploadImage extends Component {
         <div>
           <Logo />
           <Navbar>
-            <NavItem icon={<BsTagFill />}></NavItem>
+            <NavItem icon={<BsTagFill />} link="/product"></NavItem>
             <NavItem icon={<BsGeoAlt />} link="/map"></NavItem>
             <NavItem icon={<BsChevronDown />}>
               <DropdownMenu />

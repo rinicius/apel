@@ -1,3 +1,7 @@
+/* body {
+  overflow: hidden;
+} */
+
 .Mapa {
   padding: 10px 0;
   display: flex;
@@ -7,6 +11,33 @@
 }
 
 .leaflet-container {
-  height: 100vh;
+  height: 92.5vh;
   width: 100%;
 }
+
+.userContainer {
+  background-color: #129ad3;
+  width: 13vw;
+  height: 92.5vh;
+  z-index: 314159;
+  position: absolute;
+  top: 70px;
+  right: -130px;
+  overflow: "scroll";
+  transition: transform 100ms ease-in;
+}
+
+.userContainer:hover {
+  transform: translateX(-130px);
+}
+
+/* Sumir com o componente usando hover
+
+.hover-userContainer .hover-userContainer--on,
+.hover-userContainer:hover .hover-userContainer--off {
+  display: none;
+}
+
+.hover-userContainer:hover .hover-userContainer--on {
+  display: inline;
+} */

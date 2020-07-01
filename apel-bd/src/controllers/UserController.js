@@ -157,12 +157,5 @@ module.exports = {
         local: req.file.path,
       });
     }
-    // let user = await Usuario.findOneAndUpdate(
-    //   { _id: req.params.id },
-    //   { img: req.file.path },
-    //   {
-    //     new: true,
-    //   }
-    // );
   },
 };
