@@ -17,7 +17,8 @@
     "mongoose": "^5.9.16",
     "mongoose-paginate": "^5.0.3",
     "multer": "^1.4.2",
-    "require-dir": "^1.2.0"
+    "require-dir": "^1.2.0",
+    "websocket-extensions": "^0.1.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
