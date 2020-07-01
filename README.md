@@ -7,6 +7,18 @@ de negócio e consequentemente ajudarem a cidade.
 
 ## Tecnologias utilizadas
 
-- React
-- Express
-- MongoDB
+- [React](https://pt-br.reactjs.org)
+- [Express](https://expressjs.com/pt-br/)
+- [MongoDB](https://www.mongodb.com)
+
+## Scripts disponíveis
+
+No CMD, utilize
+
+### `npm dev`
+
+Após instalar as dependências na pasta **apel-bd** para iniciar o servidor backend
+
+### `yarn start`
+
+Após instalar as dependências na pasta **apel** para iniciar o servidor frontend
