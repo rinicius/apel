@@ -101,7 +101,7 @@ class Profile extends Component {
                 <Grid.Row style={{ top: "-140px" }}>
                   <Grid.Column style={{ padding: "0em 0em 0em 2.5em" }}>
                     <Header as="h1" style={{ color: "#242526" }}>
-                      {this.state.user.tipo == "usuario"
+                      {this.state.user.tipo === "usuario"
                         ? this.state.model.nome_sobrenome
                         : this.state.model.nome}
                     </Header>

@@ -10,10 +10,6 @@ import "./styles.css";
 import Index from "../../components/productsContainer";
 
 export default class classeMapa extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     empresas: [],
   };

@@ -3,7 +3,7 @@ import { Navbar, NavItem, DropdownMenu, Logo } from "../../components/header";
 import { BsChevronDown } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
-import { Header, Segment, Button, Icon, Grid, Image } from "semantic-ui-react";
+import { Header, Image } from "semantic-ui-react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
 

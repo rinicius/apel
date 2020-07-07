@@ -1,7 +1,6 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  BsGearFill,
   BsPersonFill,
   BsFillPersonPlusFill,
   BsChevronBarLeft,
@@ -47,7 +46,7 @@ export function DropdownMenu() {
     );
   }
 
-  if (isAuth == false) {
+  if (isAuth === false) {
     return (
       <div className="dropdown">
         <DropdownItem leftIcon={<BsPersonFill />} link="/login">
@@ -62,7 +61,7 @@ export function DropdownMenu() {
         {/* <DropdownItem leftIcon={<BsGearFill />}>Configurações</DropdownItem> */}
       </div>
     );
-  } else if (isAuth == true) {
+  } else if (isAuth === true) {
     return (
       <div className="dropdown">
         <DropdownItem leftIcon={<BsPersonFill />} link="/profile">
@@ -78,16 +77,6 @@ export function DropdownMenu() {
       </div>
     );
   }
-}
-
-function sticky() {
-  const scrolled = false;
-  window.addEventListener("scroll", () => {
-    const isTop = window.scrollY < 100;
-
-    if (isTop) scrolled = true;
-    else scrolled = false;
-  });
 }
 
 export function Logo() {

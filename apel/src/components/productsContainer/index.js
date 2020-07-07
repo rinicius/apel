@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Segment, Button, Icon, Grid, Image } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import api from "../../services/api";
 
 import "./styles.css";

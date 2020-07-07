@@ -1,23 +1,11 @@
 import React, { Component } from "react";
 import api from "../../services/api";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-  Select,
-  Radio,
-  Label,
-} from "semantic-ui-react";
+import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import { Navbar, NavItem, DropdownMenu, Logo } from "../../components/header";
 import { BsChevronDown } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
+import { Redirect } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 
 export default class UploadImage extends Component {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, NavItem, DropdownMenu, Logo } from "../../components/header";
 import { BsChevronDown } from "react-icons/bs";
@@ -10,8 +10,6 @@ import {
   Button,
   Icon,
   Grid,
-  GridColumn,
-  GridRow,
   Divider,
   Message,
 } from "semantic-ui-react";
@@ -23,17 +21,17 @@ import "semantic-ui-css/semantic.min.css";
 const CheckSign = () => {
   const parsed = qs.parse(window.location.search);
 
-  if (parsed.islog == "true") {
+  if (parsed.islog === "true") {
     return <Message size="tiny">Logado</Message>;
   }
-  if (parsed.islog == "false") {
+  if (parsed.islog === "false") {
     return (
       <Message size="tiny">
         Você precisa estar logado para acessar essa página
       </Message>
     );
   }
-  if (parsed.logout == "true") {
+  if (parsed.logout === "true") {
     isAuthenticated();
     return <Message size="tiny">Deslogado com sucesso</Message>;
   }

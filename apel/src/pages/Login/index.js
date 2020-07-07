@@ -38,7 +38,7 @@ class Login extends Component {
     const parsed = qs.parse(window.location.search);
     console.log(parsed);
 
-    if (parsed.s == "true") {
+    if (parsed.s === "true") {
       return <Message>Sucesso! Agora faça login com a conta criada</Message>;
     }
   };

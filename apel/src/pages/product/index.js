@@ -11,12 +11,8 @@ import {
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment,
-  Select,
-  Radio,
-  Label,
 } from "semantic-ui-react";
 
 const Insert = () => {
@@ -138,7 +134,7 @@ const Insert = () => {
 const CheckSign = () => {
   const parsed = qs.parse(window.location.search);
 
-  if (parsed.cad == "true") {
+  if (parsed.cad === "true") {
     return (
       <Message size="tiny" style={{ top: "-12px" }}>
         Produto adicionado

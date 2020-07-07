@@ -3,24 +3,8 @@ import { Navbar, NavItem, DropdownMenu, Logo } from "../../components/header";
 import { BsChevronDown } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
-import {
-  Header,
-  Strong,
-  Segment,
-  Button,
-  Icon,
-  Grid,
-  GridColumn,
-  GridRow,
-  Divider,
-  Message,
-  Container,
-  Accordion,
-  Image,
-} from "semantic-ui-react";
+import { Header, Segment, Icon, Grid, Image } from "semantic-ui-react";
 import api from "../../services/api";
-import { Link } from "react-router-dom";
-// import image from "../../uploads/";
 import * as qs from "query-string";
 
 import "semantic-ui-css/semantic.min.css";

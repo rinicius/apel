@@ -1,8 +1,7 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Map from "../pages/map";
 import Profile from "../pages/profile";
-import App from "../App";
 import Main from "../pages/main";
 import { PrivateRoute } from "./privateroute";
 import Login from "../pages/Login";
