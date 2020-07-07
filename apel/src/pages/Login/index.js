@@ -23,6 +23,7 @@ class Login extends Component {
     senha: "",
     tipo: "",
     isRedirect: false,
+    bool: false,
   };
 
   isRedirect = () => {
@@ -36,11 +37,14 @@ class Login extends Component {
 
   CheckSign = () => {
     const parsed = qs.parse(window.location.search);
-    console.log(parsed);
 
     if (parsed.s === "true") {
       return <Message>Sucesso! Agora faça login com a conta criada</Message>;
     }
+  };
+
+  Alert = () => {
+    if (this.state.bool) return <Message>Login inválido</Message>;
   };
 
   submitHandler = () => {
@@ -55,6 +59,7 @@ class Login extends Component {
       })
       .catch((err) => {
         console.log(err);
+        this.setState({ bool: true });
       });
   };
 
@@ -72,6 +77,7 @@ class Login extends Component {
           </Navbar>
         </div>
 
+        <div>{this.Alert()}</div>
         <div>{this.CheckSign()}</div>
         <div>{this.goingToRedirect()}</div>
 
