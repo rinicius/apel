@@ -258,7 +258,7 @@ class Signup extends Component {
     const { value } = this.state;
 
     return (
-      <div>
+      <div className="corpo">
         <div>
           <Logo />
           <Navbar>

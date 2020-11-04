@@ -39,7 +39,7 @@ const CheckSign = () => {
 
 function Main() {
   return (
-    <div>
+    <div className="corpo">
       <div>
         <Logo />
         <Navbar>

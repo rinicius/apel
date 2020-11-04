@@ -87,17 +87,3 @@ export function Logo() {
     </Link>
   );
 }
-
-/*
-    <Logo />
-    <Navbar>
-      <NavItem icon={<BsTagFill />}></NavItem>
-      <NavItem icon={<BsGeoAlt />}></NavItem>
-      <NavItem icon={<BsChevronDown />}>
-        <DropdownMenu />
-      </NavItem>
-    </Navbar>
-
-*/
-
-// export default { Navbar, NavItem, DropdownMenu, Logo };

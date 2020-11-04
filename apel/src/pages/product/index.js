@@ -43,7 +43,7 @@ const Insert = () => {
   };
 
   return (
-    <div>
+    <div className="corpo">
       {redirect && <Redirect to="/product?cad=true" />}
       <div>
         <Logo />
