@@ -22,6 +22,10 @@ const Empresa = mongoose.model("Empresa");
 
 app.use("/api", require("./src/routes/routes"));
 
-app.listen(3001, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log("Servidor Iniciado");
 });
+
+module.exports = app;
