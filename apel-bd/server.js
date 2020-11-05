@@ -8,7 +8,8 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/apel_DataBase",
+  process.env.MONGODB_URI ||
+    "mongodb+srv://viniciususer:dede102010@cluster0.xccg8.mongodb.net/apel?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -25,7 +26,7 @@ app.use("/api", require("./src/routes/routes"));
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log("Servidor Iniciado");
+  console.log("Servidor Iniciado!");
 });
 
 module.exports = app;
