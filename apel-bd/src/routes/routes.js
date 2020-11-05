@@ -21,6 +21,12 @@ const UserController = require("../controllers/UserController.js");
 const EmpresaController = require("../controllers/EmpresaController.js");
 const ProdutoController = require("../controllers/ProdutoController.js");
 
+routes.get("/", (req, res) => {
+  res.json({
+    Hello: "hi!",
+  });
+});
+
 routes.get("/show/:id", UserController.show, EmpresaController.show); // Mostrar usuario
 routes.get("/usuario", UserController.index); // Mostrar usuarios
 
