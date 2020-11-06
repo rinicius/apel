@@ -42,7 +42,7 @@ class Index extends Component {
     document.body.style.overflow = "hidden";
 
     return (
-      <div>
+      <div style={{ overflowY: "scroll" }}>
         <Header
           as="h3"
           textAlign="center"
