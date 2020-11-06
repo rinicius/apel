@@ -22,3 +22,7 @@ Após instalar as dependências na pasta **apel-bd** para iniciar o servidor bac
 ### `yarn start`
 
 Após instalar as dependências na pasta **apel** para iniciar o servidor frontend
+
+## Link do projeto: 
+
+https://apel.netlify.app
