@@ -4,19 +4,6 @@ const Login = require("../middlewares/login");
 const checkType = require("../middlewares/typeUser");
 const multer = require("multer");
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "../apel/public/img");
-  },
-  filename: function (req, file, cb) {
-    let extArray = file.mimetype.split("/");
-    let extension = extArray[extArray.length - 1];
-    cb(null, Date.now() + "." + extension); //Appending .jpg
-  },
-});
-
-var upload = multer({ storage: storage });
-
 const UserController = require("../controllers/UserController.js");
 const EmpresaController = require("../controllers/EmpresaController.js");
 const ProdutoController = require("../controllers/ProdutoController.js");
@@ -54,14 +41,27 @@ routes.put("/empresa/editar", EmpresaController.update); // editar empresa
 routes.delete("/usuario/:id", UserController.remove); // remover usuario
 routes.delete("/empresa/:id", EmpresaController.update); // remover empresa
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../assets/img");
+  },
+  filename: function (req, file, cb) {
+    let extArray = file.mimetype.split("/");
+    let extension = extArray[extArray.length - 1];
+    cb(null, Date.now() + "." + extension); //Appending .jpg
+  },
+});
+
+var upload = multer({ storage: storage });
+
 routes.post(
   "/profile/:id",
   upload.single("avatar"),
   function (req, res, next) {
     next();
   },
-  //   UserController.upImage,
   UserController.upImage,
   EmpresaController.upImage
 );
+
 module.exports = routes;

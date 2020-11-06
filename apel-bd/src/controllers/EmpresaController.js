@@ -116,6 +116,8 @@ module.exports = {
     return res.send("<h2>Empresa " + nome.nome + " removido com sucesso</h2>");
   },
 
+  // não está sendo usada
+
   async upImage(req, res) {
     const filter = { _id: req.params.id };
     // let user = await Usuario.findOneAndUpdate(

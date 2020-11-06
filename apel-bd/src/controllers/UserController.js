@@ -145,6 +145,8 @@ module.exports = {
     });
   },
 
+  // não está sendo usada
+
   async upImage(req, res, next) {
     let user = await Usuario.findById(req.params.id);
     if (user == undefined) {

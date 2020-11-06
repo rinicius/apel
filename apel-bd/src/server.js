@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-  process.env.MONBODB_URI || "mongodb://localhost/apel_DataBase",
+  process.env.MONGODB_URI || "mongodb://localhost/apel_DataBase",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
