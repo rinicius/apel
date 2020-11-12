@@ -17,13 +17,14 @@
 
 .userContainer {
   background-color: #129ad3;
-  width: 13vw;
+  width: 15vw;
   height: 92.5vh;
   z-index: 314159;
   position: absolute;
   top: 70px;
   right: -130px;
   overflow-y: "scroll";
+  overflow-x: "scroll";
   transition: transform 100ms ease-in;
 }
 

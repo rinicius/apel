@@ -8,7 +8,7 @@ module.exports = {
   async index(req, res) {
     const { page = 1 } = req.query;
 
-    const produto = await Produto.paginate({}, { page, limit: 7 });
+    const produto = await Produto.paginate({}, { page, limit: 4 });
     return res.json(produto);
   },
 

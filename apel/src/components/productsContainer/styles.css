@@ -4,9 +4,6 @@
 }
 
 .product-list article {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -17,28 +14,6 @@
   margin-top: 5px;
   line-height: 24px;
 }
-/* 
-.product-list article a {
-  height: 30px;
-  border-radius: 5px;
-  border: 2px solid #1b1c1d;
-  background: none;
-  margin-top: 10px;
-  color: #1b1c1d;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s;
-}
-
-.product-list article a:hover {
-  transform: scale(1.02);
-  background: #1b1c1d;
-  color: #fff;
-} */
 
 .product-list .actions {
   display: flex;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Header } from "semantic-ui-react";
 import api from "../../services/api";
+import { BsChevronRight, BsChevronLeft, BsFillTagFill } from "react-icons/bs";
 
 import "./styles.css";
 
@@ -42,56 +43,77 @@ class Index extends Component {
     document.body.style.overflow = "hidden";
 
     return (
-      <div style={{ overflowY: "scroll" }}>
+      <div
+        style={{
+          overflowY: "hidden",
+          overflowX: "hidden",
+        }}
+      >
         <Header
-          as="h3"
+          as="h2"
           textAlign="center"
           style={{
-            padding: "15px 15px 2px 15px",
+            maxWidth: "300px",
+            padding: "15px 15px 0 15px",
             display: "flex",
-            alignItens: "center",
             justifyContent: "center",
+            marginBottom: "13px",
+
+            // backgroundColor: "#0e7ba8",
+            // borderRadius: "5px",
           }}
         >
           Produtos em falta na região
         </Header>
-        <div>
+
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div
             className="product-list"
             style={{
+              minWidth: "200px",
               maxWidth: "700px",
               padding: "1px 10px",
               margin: "1px auto 0",
             }}
           >
             {products.map((product) => (
-              <article
-                key={product._id}
-                style={{ borderRadius: "5px", padding: "10px" }}
-              >
-                <Header
-                  as="h5"
-                  textAlign="left"
+              <div style={{ display: "flex" }}>
+                <BsFillTagFill size={25} style={{ margin: "5px" }} />
+                <article
+                  key={product._id}
                   style={{
-                    fontSize: "1.3em",
-                    padding: "0 0 0 0",
+                    padding: "5px",
+                    backgroundColor: "transparent",
+                    border: "0",
                   }}
                 >
-                  <Header.Content> {product.nome}</Header.Content>
-                </Header>
-                <p>{product.descricao}</p>
-              </article>
+                  <Header
+                    as="h5"
+                    textAlign="left"
+                    style={{
+                      fontSize: "1.3em",
+                      maxWidth: "150px",
+                      margin: "0",
+                    }}
+                  >
+                    <Header.Content> {product.nome}</Header.Content>
+                  </Header>
+                  <p style={{ color: "#242424", bold: "600" }}>
+                    {product.descricao}
+                  </p>
+                </article>
+              </div>
             ))}
 
             <div className="actions">
               <button disabled={page === 1} onClick={this.prevPage}>
-                Anterior
+                <BsChevronLeft />
               </button>
               <button
                 disabled={page === this.state.productInfo.pages}
                 onClick={this.nextPage}
               >
-                Próximo
+                <BsChevronRight />
               </button>
             </div>
           </div>

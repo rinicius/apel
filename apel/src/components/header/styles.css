@@ -59,12 +59,7 @@ a {
 }
 
 .arrow:hover {
-  transform: scale(1.05);
-}
-
-.icon-button:hover {
-  opacity: 140%;
-  filter: brightness(1.2);
+  transform: scale(1.2);
 }
 
 .icon-button svg {
