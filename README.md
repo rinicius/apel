@@ -9,6 +9,8 @@ de negócio e consequentemente ajudarem a cidade.
 
 https://apel.netlify.app
 
+*Algumas informações demoram para carregar devido ao tráfego no site hospedado: heroku
+
 ## Tecnologias utilizadas
 
 - [React](https://pt-br.reactjs.org)
