@@ -120,19 +120,10 @@ module.exports = {
 
   async upImage(req, res) {
     const filter = { _id: req.params.id };
-    // let user = await Usuario.findOneAndUpdate(
-    //   { _id: req.params.id },
-    //   { img: req.file.path },
-    //   {
-    //     new: true,
-    //   }
-    // );
 
-    await Empresa.updateOne(filter, { img: req.file.path });
-
-    console.log(req.params.id);
+    await Empresa.updateOne(filter, { img: req.body.url });
     return res.status(200).send({
-      local: req.file.path,
+      msg: "Enviado com sucesso",
     });
   },
 };

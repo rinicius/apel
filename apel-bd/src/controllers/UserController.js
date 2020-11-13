@@ -153,10 +153,10 @@ module.exports = {
       next();
     } else {
       const filter = { _id: req.params.id };
-      await Usuario.updateOne(filter, { img: req.file.path });
+      await Usuario.updateOne(filter, { img: req.body.url });
 
       return res.status(200).send({
-        local: req.file.path,
+        msg: "Imagem atualizada com sucesso",
       });
     }
   },

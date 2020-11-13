@@ -7,15 +7,17 @@ import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
 import { Redirect } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
+import { StorageConnection } from "../../firebase/connectionFB";
 
 export default class UploadImage extends Component {
   state = {
     user: {},
     redirect: false,
     selectedFile: null,
+    url: null,
   };
 
-  handleFile = (e) => {
+  handleFileChange = (e) => {
     this.setState({ selectedFile: e.target.files[0] });
   };
 
@@ -42,28 +44,36 @@ export default class UploadImage extends Component {
     }
   };
 
+  uploadToDB = () => {
+    api
+      .post("/api/profile/" + this.state.user._id, { url: this.state.url })
+      .then((res) => {
+        console.log(res.data.msg);
+      });
+  };
+
   handleFileSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append(
-      "avatar",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
+    const UploadTask = StorageConnection.ref(
+      `images/${this.state.user._id}`
+    ).put(this.state.selectedFile);
+    UploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
       },
-    };
-
-    api
-      .post(`/profile/${this.state.user._id}`, formData, config)
-      .then((res) => {
-        console.log(res.data);
-        this.setRedirect();
-        console.log(this.state.redirect);
-      })
-      .catch((err) => console.log(err));
+      () => {
+        StorageConnection.ref("images")
+          .child(this.state.user._id)
+          .getDownloadURL()
+          .then((url) => {
+            this.setState({ url: url });
+            this.uploadToDB();
+            this.setRedirect();
+          });
+      }
+    );
   };
 
   componentDidMount() {
@@ -71,6 +81,7 @@ export default class UploadImage extends Component {
   }
 
   render() {
+    console.log(this.state.selectedFile);
     return (
       <div>
         <div>
@@ -104,7 +115,7 @@ export default class UploadImage extends Component {
                     fluid
                     type="file"
                     name="avatar"
-                    onChange={this.handleFile}
+                    onChange={this.handleFileChange}
                   ></Form.Input>
 
                   <Button color="black" fluid size="large">
