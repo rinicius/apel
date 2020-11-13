@@ -5,6 +5,10 @@ econômicas de uma cidade.
 Feita para auxiliar empreendedores a construírem seu plano
 de negócio e consequentemente ajudarem a cidade.
 
+## Link do projeto: 
+
+https://apel.netlify.app
+
 ## Tecnologias utilizadas
 
 - [React](https://pt-br.reactjs.org)
@@ -23,6 +27,3 @@ Após instalar as dependências na pasta **apel-bd** para iniciar o servidor bac
 
 Após instalar as dependências na pasta **apel** para iniciar o servidor frontend
 
-## Link do projeto: 
-
-https://apel.netlify.app
