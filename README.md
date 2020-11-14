@@ -10,6 +10,7 @@ de negócio e consequentemente ajudarem a cidade.
 https://apel.netlify.app
 
 *Algumas informações demoram para carregar devido ao tráfego no site hospedado: heroku*
+
 *Caso nada apareça na página do mapa, volte para a página Home clicando no logo e depois clicando no mapa novamente*
 
 ## Tecnologias utilizadas
