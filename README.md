@@ -23,7 +23,7 @@ https://apel.netlify.app
 
 No CMD, utilize
 
-### `npm dev`
+### `npm run dev`
 
 Após instalar as dependências na pasta **apel-bd** para iniciar o servidor backend
 
