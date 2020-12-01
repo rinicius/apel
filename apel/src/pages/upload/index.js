@@ -46,7 +46,7 @@ export default class UploadImage extends Component {
 
   uploadToDB = () => {
     api
-      .post("/api/profile/" + this.state.user._id, { url: this.state.url })
+      .post("/profile/" + this.state.user._id, { url: this.state.url })
       .then((res) => {
         console.log(res.data.msg);
       });

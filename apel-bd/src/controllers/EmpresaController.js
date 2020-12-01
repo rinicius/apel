@@ -103,9 +103,14 @@ module.exports = {
   },
 
   async update(req, res) {
-    const empresa = await Empresa.findByIdAndUpdate(req.usuario._id, req.body, {
-      new: true,
-    });
+    const empresa = await Empresa.findByIdAndUpdate(
+      req.body._id,
+      req.body.user,
+      {
+        new: true,
+        useFindAndModify: false,
+      }
+    );
     return res.json(empresa);
   },
 

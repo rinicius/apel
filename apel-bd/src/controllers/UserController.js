@@ -105,34 +105,14 @@ module.exports = {
   },
 
   async update(req, res) {
-    const {
-      nome_sobrenome,
-      idade,
-      sexo,
-      profissao,
-      email,
-      senha,
-      descricao,
-      twitter,
-      site,
-    } = req.body;
-
-    const hashedPass = await bcrypt.hash(senha, 10);
-
-    const user = {
-      nome_sobrenome,
-      idade,
-      sexo,
-      profissao,
-      email,
-      senha: hashedPass,
-      descricao,
-      twitter,
-      site,
-    };
-    const usuario = await Usuario.findByIdAndUpdate(req.usuario._id, user, {
-      new: true,
-    });
+    const usuario = await Usuario.findByIdAndUpdate(
+      req.body.id,
+      req.body.user,
+      {
+        new: true,
+        useFindAndModify: false,
+      }
+    );
     return res.json(usuario);
   },
 

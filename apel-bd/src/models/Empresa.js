@@ -45,7 +45,8 @@ const EmpresaSchema = mongoose.Schema({
   img: {
     type: String,
     required: false,
-    default: "..\\apel\\public\\img\\default-placeholder-1-2.png",
+    default:
+      "https://firebasestorage.googleapis.com/v0/b/apel-a997a.appspot.com/o/images%2Fdefault-placeholder-1-2.png?alt=media&token=b4485c58-5ed2-43b7-99db-3c03b3c8fa35",
   },
 
   createdAt: {

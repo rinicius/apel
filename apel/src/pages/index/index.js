@@ -75,9 +75,7 @@ class Index extends Component {
                 <Header as="h5" style={{ fontSize: "1.3em" }}>
                   <Image
                     style={{ height: "40px", width: "40px" }}
-                    src={
-                      window.location.origin + "/img/" + user.img.split("\\")[4]
-                    }
+                    src={user.img}
                     avatar
                   ></Image>
                   <Header.Content> {user.nome_sobrenome}</Header.Content>

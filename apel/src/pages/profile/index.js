@@ -3,7 +3,15 @@ import { Navbar, NavItem, DropdownMenu, Logo } from "../../components/header";
 import { BsChevronDown } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsTagFill } from "react-icons/bs";
-import { Header, Segment, Button, Icon, Grid, Image } from "semantic-ui-react";
+import {
+  Header,
+  Segment,
+  Button,
+  Icon,
+  Grid,
+  Image,
+  Form,
+} from "semantic-ui-react";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
 // import image from "../../uploads/";
@@ -15,6 +23,8 @@ class Profile extends Component {
     user: {},
     model: {},
     path: [],
+    editOn: false,
+    buttonOn: true,
   };
 
   getModel = async () => {
@@ -22,11 +32,56 @@ class Profile extends Component {
       .get(`show/${this.state.user._id}`)
       .then((res) => {
         this.setState({ model: res.data });
-        this.setState({ path: this.state.model.img.split(`\\`) });
+        this.setState({ path: this.state.model.img });
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  handleSubmit = () => {
+    console.log(this.state.model);
+
+    const {
+      nome_sobrenome,
+      idade,
+      sexo,
+      profissao,
+      email,
+      senha,
+      descricao,
+      twitter,
+      site,
+    } = this.state.model;
+
+    const model = {
+      nome_sobrenome,
+      idade,
+      sexo,
+      profissao,
+      email,
+      senha,
+      descricao,
+      twitter,
+      site,
+    };
+    api
+      .put(`${this.state.user.tipo}/editar`, {
+        user: model,
+        id: this.state.user._id,
+      })
+      .then((res) => {
+        this.setState({ editOn: !this.state.editOn });
+        this.setState({ buttonOn: !this.state.buttonOn });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  setEdit = () => {
+    this.setState({ editOn: !this.state.editOn });
+    this.setState({ buttonOn: !this.state.buttonOn });
   };
 
   Token = async () => {
@@ -80,9 +135,7 @@ class Profile extends Component {
                 <Grid.Row style={{ top: "-140px" }}>
                   <Grid.Column>
                     <Image
-                      src={
-                        window.location.origin + "/img/" + this.state.path[4]
-                      }
+                      src={this.state.path}
                       rounded
                       style={{ height: "240px", width: "240px" }}
                     ></Image>
@@ -92,9 +145,128 @@ class Profile extends Component {
                     </Button>
                     <br />
                     <br />
-                    <Button as={Link} to="/editar">
-                      Editar perfil
-                    </Button>
+                    {this.state.buttonOn && (
+                      <Button onClick={this.setEdit}>Editar perfil</Button>
+                    )}
+                    {this.state.editOn && (
+                      <div style={{ marginTop: "10px" }}>
+                        <Form.Input
+                          fluid
+                          icon="user"
+                          iconPosition="left"
+                          placeholder="Descrição"
+                          name="nome"
+                          style={{
+                            width: "300px",
+                            marginBottom: "10px",
+                          }}
+                          value={this.state.model.descricao}
+                          onChange={(e) =>
+                            this.setState({
+                              model: {
+                                ...this.state.model,
+                                descricao: e.target.value,
+                              },
+                            })
+                          }
+                        />
+
+                        <Form.Input
+                          fluid
+                          icon="user"
+                          iconPosition="left"
+                          placeholder="Nome"
+                          name="nome"
+                          style={{ width: "300px", marginBottom: "10px" }}
+                          value={
+                            this.state.user.tipo === "usuario"
+                              ? this.state.model.nome_sobrenome
+                              : this.state.model.nome
+                          }
+                          onChange={(e) => {
+                            if (this.state.user.tipo === "usuario") {
+                              this.setState({
+                                model: {
+                                  ...this.state.model,
+                                  nome_sobrenome: e.target.value,
+                                },
+                              });
+                            } else {
+                              this.setState({
+                                model: {
+                                  ...this.state.model,
+                                  nome: e.target.value,
+                                },
+                              });
+                            }
+                          }}
+                        />
+
+                        <Form.Input
+                          fluid
+                          icon="user"
+                          iconPosition="left"
+                          placeholder="Profissão"
+                          name="nome"
+                          style={{ width: "300px", marginBottom: "10px" }}
+                          value={this.state.model.profissao}
+                          onChange={(e) =>
+                            this.setState({
+                              model: {
+                                ...this.state.model,
+                                profissao: e.target.value,
+                              },
+                            })
+                          }
+                        />
+
+                        <Form.Input
+                          fluid
+                          icon="user"
+                          iconPosition="left"
+                          placeholder="Twitter"
+                          name="nome"
+                          style={{ width: "300px", marginBottom: "10px" }}
+                          value={this.state.model.twitter}
+                          onChange={(e) =>
+                            this.setState({
+                              model: {
+                                ...this.state.model,
+                                twitter: e.target.value,
+                              },
+                            })
+                          }
+                        />
+
+                        <Form.Input
+                          fluid
+                          icon="user"
+                          iconPosition="left"
+                          placeholder="Site"
+                          name="nome"
+                          style={{ width: "300px", marginBottom: "10px" }}
+                          value={this.state.model.site}
+                          onChange={(e) =>
+                            this.setState({
+                              model: {
+                                ...this.state.model,
+                                site: e.target.value,
+                              },
+                            })
+                          }
+                        />
+
+                        <div style={{ flexDirection: "row" }}>
+                          <Button secondary onClick={this.handleSubmit}>
+                            Salvar
+                          </Button>
+
+                          <Button primary onClick={this.setEdit}>
+                            Cancelar
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </Grid.Column>
                 </Grid.Row>
                 <Grid.Row style={{ top: "-140px" }}>

@@ -13,7 +13,7 @@ class Profilealh extends Component {
   state = {
     user: {},
     model: {},
-    path: [],
+    path: null,
     id: "",
   };
 
@@ -24,7 +24,7 @@ class Profilealh extends Component {
       .get(`show/${qs.parse(window.location.search).id}`)
       .then((res) => {
         this.setState({ model: res.data });
-        this.setState({ path: this.state.model.img.split(`\\`) });
+        this.setState({ path: this.state.model.img });
         return res.data;
       })
       .catch((err) => {
@@ -76,9 +76,7 @@ class Profilealh extends Component {
                 <Grid.Row style={{ top: "-140px" }}>
                   <Grid.Column>
                     <Image
-                      src={
-                        window.location.origin + "/img/" + this.state.path[4]
-                      }
+                      src={this.state.path} //////////////////////////////////////////
                       rounded
                       style={{ height: "240px", width: "240px" }}
                     ></Image>
